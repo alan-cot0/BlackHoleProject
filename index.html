@@ -9,6 +9,16 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/noscript.css" />
   </noscript>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+  <script>
+    (async () => { // create anonymous async function to enable await
+      const pyodide = await loadPyodide();
+      console.log(pyodide.runPython(`
+        import sys
+        sys.version
+      `));
+    })(); // call the async function immediately
+  </script>
 </head>
 
 <body class="is-preload">
@@ -56,8 +66,8 @@
       </article>
       <article class="thumb">
         <a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt="" /></a>
-        <h2>Sed consequat phasellus</h2>
-        <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+        <h2>In-Line Python</h2>
+        <p>Run Python code without going to another page.</p>
       </article>
       <article class="thumb">
         <a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt="" /></a>
