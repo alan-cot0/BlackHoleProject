@@ -9,13 +9,13 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/noscript.css" />
   </noscript>
+  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
   <script>
     (async () => { // create anonymous async function to enable await
       const pyodide = await loadPyodide();
       console.log(pyodide.runPython(`
-        import sys
-        sys.version
+        import sys; sys.version
       `));
     })(); // call the async function immediately
   </script>
@@ -62,12 +62,15 @@
         <a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt="" /></a>
         <h2>Python Tests</h2>
         <p>This lets Hope run their Python code. Click <a href="index.php">here</a> to run them.</p>
-	<?php echo shell_exec("python test.py");?>
+	<!-- ?php echo shell_exec("python test.py");?> -->
       </article>
       <article class="thumb">
         <a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt="" /></a>
         <h2>In-Line Python</h2>
-        <p>Run Python code without going to another page.</p>
+        <p>Run Python code without going to another page. <button type="button" onclick="testPythonScript()">
+          Test
+        </button></p>
+        <p id="output1">OUTPUT</p>
       </article>
       <article class="thumb">
         <a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt="" /></a>
