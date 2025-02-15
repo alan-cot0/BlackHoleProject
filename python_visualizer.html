@@ -37,12 +37,14 @@
                 import mpld3
 
                 fig, ax = plt.subplots()
-                ax.plot([1,3,2])
+                plt.plot([1,3,2])
 
                 html_str = mpld3.fig_to_html(fig)
                 pv = open("python_visualizer.html", "w")
                 pv.write(html_str)
                 pv.close()
+
+                display(fig, target="mpl")
 
                 buf = io.BytesIO()
                 fig.savefig(buf, format='png')
