@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Some Python Code for Visualization</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="style.css" />
+        <noscript>
+          <link rel="stylesheet" href="assets/css/noscript.css" />
+        </noscript>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+        <script>
+            (async () => { // create anonymous async function to enable await
+              const pyodide = await loadPyodide();
+              console.log(pyodide.runPython(`
+                import sys; sys.version
+              `));
+            })(); // call the async function immediately
+          </script>
+    </head>
+    <body>
+        <h1><a href="index.html">GalaxAI Home</a></h1>
+        <div id="textfield">A matplotlib figure:</div>
+        <div class="container">
+        <div id="pyplotdiv" class="image"><img id="pyplotfigure", width="400", height="400"/></div>
+        <div class="text">This is an AI model that using a graph of energy to determine if there is a dead galaxy or a
+            black hole.
+        </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+      languagePluginLoader.then(() => {
+      pyodide.loadPackage(['matplotlib']).then(() => {
+          pyodide.runPython(`
+                import matplotlib.pyplot as plt
+                import io, base64
+                import mpld3
+
+                fig, ax = plt.subplots()
+                ax.plot([1,3,2])
+
+                html_str = mpld3.fig_to_html(fig)
+                pv = open("python_visualizer.html", "w")
+                pv.write(html_str)
+                pv.close()
+
+                buf = io.BytesIO()
+                fig.savefig(buf, format='png')
+                buf.seek(0)
+                img_str = 'data:image/png;base64,' + base64.b64encode(buf.read()).decode('UTF-8')`
+          );
+
+          document.getElementById("pyplotfigure").src=pyodide.globals.img_str
+
+      });});
+
+    </script>
+
+    
+</html>
