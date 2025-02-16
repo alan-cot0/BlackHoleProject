@@ -1,7 +1,7 @@
 from astropy.io import fits
 
 # Load the FITS file
-fits_image_filename = 'C:/Users/23rou/Downloads/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits'
+fits_image_filename = '../assets/GalaxyData/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits'
 hdul = fits.open(fits_image_filename)
 
 # Iterate through HDUs to find table data
@@ -28,9 +28,9 @@ def inspect_fits_file(fits_file):
 
 # Example usage
 fits_files = [
-    r"C:/Users/23rou/Downloads/gds-deep-hr-v1_g395h-f290lp_1210_10639.spec.fits",
-    r"C:/Users/23rou/Downloads/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits",
-    r"C:/Users/23rou/Downloads/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits"
+    r"../assets/GalaxyData/gds-deep-hr-v1_g395h-f290lp_1210_10639.spec.fits",
+    r"../assets/GalaxyData/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits",
+    r"../assets/GalaxyData/gds-barrufet-s67-v2_prism-clear_2198_8777.spec.fits"
 ]
 
 for fits_file in fits_files:

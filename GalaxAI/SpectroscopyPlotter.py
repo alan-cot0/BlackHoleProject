@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as np 
 from astropy.io import fits
 
 prominent_features = {

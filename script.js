@@ -1,5 +1,5 @@
 /**
- * This function tests a sample bit of Python code.
+ * This function tests a sample bit of Python code. (Deprecated)
  * @param none
  */
 async function testPythonScript() {
