@@ -30,11 +30,27 @@ app.post('/upload', upload.single('fits_file'), async (req, res) => {
 });
 
 // Function to read the FITS file using fitsjs
-async function readFitsFile(fitsFilePath) {
-    const buffer = fs.readFileSync(fitsFilePath);
-    const data = await fits.parse(buffer);
-    return data[1].data;
+const fs = require('fs');
+const FITS = require('fitsjs');
+
+async function readFitsFile(filePath) {
+    try {
+        const fileBuffer = fs.readFileSync(filePath); // Read FITS file as a buffer
+        const fits = new FITS(fileBuffer); // Load FITS file
+        const hdus = fits.getHDU(); // Get Header Data Units
+
+        if (!hdus || hdus.length === 0) {
+            throw new Error("No HDUs found in FITS file.");
+        }
+
+        console.log("FITS file successfully read:", hdus);
+        return hdus;
+    } catch (error) {
+        console.error("Error reading FITS file:", error.message);
+        return null;
+    }
 }
+
 
 // Function to generate the plot using Canvas
 function generatePlot(data, redshift) {
