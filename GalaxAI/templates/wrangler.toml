@@ -1,0 +1,4 @@
+name = "my-fits-project"
+type = "javascript"
+account_id = "12a5342f6e3cb5bc95d66ba34dfa9036"
+workers_dev = true
