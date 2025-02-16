@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload FITS File and Redshift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"], input[type="number"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Upload FITS File and Enter Redshift</h2>
+    <form id="fits-form" enctype="multipart/form-data">
+        <input type="file" id="fits-file" name="fits_file" accept=".fits" required>
+        <input type="number" id="redshift" name="redshift" placeholder="Enter Redshift" step="0.01" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>Plot:</h3>
+    <img id="spectrum-plot" src="" alt="Spectrum Plot" style="max-width: 100%;">
+
+</div>
+
+<script>
+    document.getElementById('fits-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        const fitsFile = document.getElementById('fits-file').files[0];
+        const redshift = document.getElementById('redshift').value;
+
+        formData.append('fits_file', fitsFile);
+        formData.append('redshift', redshift);
+
+        try {
+            const response = await fetch('http://localhost:5000/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const imageUrl = await response.text();
+                document.getElementById('spectrum-plot').src = imageUrl;
+            } else {
+                alert('Error processing the FITS file.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to upload the file.');
+        }
+    });
+</script>
+
+</body>
+</html>

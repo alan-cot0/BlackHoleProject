@@ -7,6 +7,10 @@ import io
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def index():
+    return render_template('FlaskTEST.html')
 # Ensure the 'static' folder exists
 if not os.path.exists('static'):
     os.makedirs('static')
