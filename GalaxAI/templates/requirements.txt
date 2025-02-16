@@ -1,8 +1,3 @@
-#do nothing 
-#import multiprocessing
-
-#import gunicorn.app.base
-
 flask
 gunicorn
 numpy
@@ -24,4 +19,3 @@ prompt_toolkit==3.0.47
 pycparser==2.22
 pyerfa==2.0.1.4
 prov==2.0.1
-
