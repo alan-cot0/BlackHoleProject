@@ -12,7 +12,7 @@ if not os.path.exists('static'):
     os.makedirs('static')
 
 # Endpoint to handle the FITS file upload and redshift input
-@app.route('galaxai.wiki/FlaskTEST.html', methods=['GET', 'POST'])
+@app.route('./', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         # Get the uploaded FITS file
