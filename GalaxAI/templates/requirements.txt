@@ -19,3 +19,4 @@ prompt_toolkit==3.0.47
 pycparser==2.22
 pyerfa==2.0.1.4
 prov==2.0.1
+pywin32
