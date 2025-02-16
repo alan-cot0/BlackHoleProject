@@ -1,4 +1,19 @@
 #do nothing 
-import multiprocessing
+#import multiprocessing
 
-import gunicorn.app.base
+#import gunicorn.app.base
+
+flask
+gunicorn
+numpy
+matplotlib
+scikit-learn
+pandas
+requests
+PyMuPDF==1.25.2
+PyPDF2==3.0.1
+python-dateutil==2.9.0.post0
+pytz==2024.2
+pyparsing==3.1.2
+python-json-logger==2.0.7
+Pygments==2.18.0
