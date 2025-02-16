@@ -78,4 +78,4 @@ def show_fits_table_filtered(file_path, extension=1, flux_column="FLUX", wave_co
 
 
 show_fits_table_filtered("C:/Users/23rou/Downloads/icnk04020_drc.fits/icnk04020_drc.fits")
-
+# TO-DO: REPLACE

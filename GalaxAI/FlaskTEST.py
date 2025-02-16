@@ -54,7 +54,7 @@ def generate_spectrum_plot(fits_path, redshift):
         plt.grid(True)
 
         # Save the plot as a PNG image
-        plot_path = 'C:/Users/23rou/Downloads/GalaxAI/static/spectrum_plot.png'
+        plot_path = 'static/spectrum_plot.png'
         plt.savefig(plot_path, format="png", bbox_inches='tight')
         plt.close()
 
