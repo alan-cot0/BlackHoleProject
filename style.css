@@ -10,3 +10,8 @@ html {
   justify-content: center;
   column-gap: 10px;
 }
+
+.mark {
+  background-color: black;
+  color: black;
+}
